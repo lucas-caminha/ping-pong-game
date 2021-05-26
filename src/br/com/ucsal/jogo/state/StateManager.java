@@ -14,6 +14,7 @@ public class StateManager {
 	}
 	
 	public StateManager() {
+		states[0] = new FPSState();
 		
 	}
 	
