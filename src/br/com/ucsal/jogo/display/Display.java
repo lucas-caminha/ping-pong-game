@@ -2,6 +2,7 @@ package br.com.ucsal.jogo.display;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
+import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
 
@@ -25,6 +26,12 @@ public class Display {
 		jframe.setVisible(true);
 	}
 	
+	public BufferStrategy getBufferStrategy() {
+		return canvas.getBufferStrategy();
+	}
 	
+	public void createBufferStrategy() {
+		canvas.createBufferStrategy(3);
+	}
 	
 }
