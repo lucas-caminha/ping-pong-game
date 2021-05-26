@@ -14,10 +14,25 @@ public class Jogo implements Runnable{
 
 	@Override
 	public void run() {
-		while(this.running) {
-			System.out.println("Pintando...");
-		}
 		
+		int FPS = 60;
+		double timePerTick = 1000000000 / 60;
+		double delta = 0;
+		long now; 
+		long lastTime = System.nanoTime();
+		
+		while(this.running) {
+			now = System.nanoTime();
+			delta += (now - lastTime) / timePerTick;
+			lastTime = now;
+			
+			if (delta >= 1) {
+				System.out.println(delta);
+				delta--;
+			}
+			
+		}
+		stop();
 	}
 	
 	public synchronized void start() {
