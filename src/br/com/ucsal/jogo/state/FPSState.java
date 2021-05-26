@@ -45,4 +45,14 @@ public class FPSState implements State {
 		g.drawString(text, g.getFontMetrics().stringWidth(text), g.getFontMetrics(font).getHeight());
 	}
 
+	@Override
+	public void KeyPressed(int cod) {
+		System.out.println("Press: " + cod);
+	}
+
+	@Override
+	public void KeyReleased(int cod) {
+		System.out.println("Release: " + cod);
+	}
+
 }

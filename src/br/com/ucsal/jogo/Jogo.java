@@ -19,6 +19,8 @@ public class Jogo implements Runnable{
 	public Jogo() {
 		this.display = new Display("Ping Pong", width, height);	
 		this.stateManager = new StateManager();
+		this.display.setKeyListener(stateManager);
+		this.stateManager.setState(1);
 	}
 
 	@Override

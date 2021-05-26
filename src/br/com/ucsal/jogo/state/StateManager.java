@@ -1,8 +1,10 @@
 package br.com.ucsal.jogo.state;
 
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class StateManager {
+public class StateManager implements KeyListener{
 	
 	public static final int numberStates = 2;
 	public static State[] states = new State[numberStates];
@@ -15,6 +17,7 @@ public class StateManager {
 	
 	public StateManager() {
 		states[0] = new FPSState();
+		states[1] = new MenuState();
 		
 	}
 	
@@ -28,6 +31,21 @@ public class StateManager {
 	
 	public static State getState() {
 		return states[currentState];
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		states[currentState].KeyPressed(e.getKeyCode());
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		states[currentState].KeyPressed(e.getKeyCode());
 	}
 	
 }
