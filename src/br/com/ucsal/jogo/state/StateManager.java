@@ -6,9 +6,12 @@ import java.awt.event.KeyListener;
 
 public class StateManager implements KeyListener{
 	
-	public static final int numberStates = 2;
-	public static State[] states = new State[numberStates];
+	public static final int NUMBERSTATES = 2;
+	public static State[] states = new State[NUMBERSTATES];
 	public static int currentState = 0;
+	
+	public static final int FPS = 0;
+	public static final int MENU = 1;
 	
 	public static void setState(int state) {
 		currentState = state;
@@ -45,7 +48,7 @@ public class StateManager implements KeyListener{
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		states[currentState].KeyPressed(e.getKeyCode());
+		states[currentState].KeyReleased(e.getKeyCode());
 	}
 	
 }
