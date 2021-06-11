@@ -6,12 +6,13 @@ import java.awt.event.KeyListener;
 
 public class StateManager implements KeyListener{
 	
-	public static final int NUMBERSTATES = 2;
+	public static final int NUMBERSTATES = 3;
 	public static State[] states = new State[NUMBERSTATES];
 	public static int currentState = 0;
 	
 	public static final int FPS = 0;
 	public static final int MENU = 1;
+	public static final int LEVEL1 = 2;
 	
 	public static void setState(int state) {
 		currentState = state;
@@ -21,7 +22,7 @@ public class StateManager implements KeyListener{
 	public StateManager() {
 		states[0] = new FPSState();
 		states[1] = new MenuState();
-		
+		states[2] = new Level1State();
 	}
 	
 	public void update() {

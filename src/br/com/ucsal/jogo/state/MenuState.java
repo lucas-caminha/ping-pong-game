@@ -13,6 +13,7 @@ public class MenuState implements State {
 	private Font font2;
 	private String[] options = {"JOGAR", "INFO", "SAIR"};
 	private int choice = 0;
+	private int x = 0, y = 0, movex = 1, movey = 1;
 
 	@Override
 	public void init() {
@@ -22,8 +23,25 @@ public class MenuState implements State {
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
+		x += movex;
+		y += movey;
+		
+		limits();
+	}
 
+	private void limits() {
+		if (x+15 > Jogo.width) {
+			movex = -1;
+		}
+		if (y+15 > Jogo.height) {
+			movey = -1;
+		}
+		if (x < 0) {
+			movex = 1;
+		}
+		if (y < 0) {
+			movey = 1;
+		}
 	}
 
 	@Override
@@ -43,6 +61,9 @@ public class MenuState implements State {
 				g.setColor(Color.YELLOW);
 			g.drawString(options[i], Jogo.width / 2 - g.getFontMetrics().stringWidth(options[i])/2, Jogo.height * 3/4 + g.getFontMetrics(font2).getHeight() * i);
 		}
+		
+		g.setColor(Color.WHITE);
+		g.fillRect(x, y, 15, 15);
 	}
 
 	@Override
@@ -70,13 +91,17 @@ public class MenuState implements State {
 	private void select() {
 		switch(choice) {
 		case 0:
-			StateManager.setState(StateManager.FPS);
+			StateManager.setState(StateManager.LEVEL1);
 			break;
 		case 1:
 			break;
 		case 2:
+			System.exit(0);
+			break;
+		default:
 			break;
 		}
+;
 		
 	}
 

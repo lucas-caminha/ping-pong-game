@@ -4,9 +4,10 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import br.com.ucsal.jogo.display.Display;
+import br.com.ucsal.jogo.input.KeyManager;
 import br.com.ucsal.jogo.state.StateManager;
 
-public class Jogo implements Runnable{
+public class Jogo implements Runnable {
 	
 	private Display display;
 	private Thread thread;
@@ -15,12 +16,15 @@ public class Jogo implements Runnable{
 	public static int width = 400, height = 300;
 	
 	private StateManager stateManager;
+	private KeyManager keyManager;
 	
 	public Jogo() {
 		this.display = new Display("Ping Pong", width, height);	
 		this.stateManager = new StateManager();
+		this.keyManager = new KeyManager();
 		this.display.setKeyListener(stateManager);
-		this.stateManager.setState(1);
+		this.display.setKeyListener(keyManager);
+		StateManager.setState(StateManager.MENU);
 	}
 
 	@Override
@@ -70,6 +74,7 @@ public class Jogo implements Runnable{
 			return ;
 		}
 		stateManager.update();
+		keyManager.update();
 	}
 
 	private void init() {
